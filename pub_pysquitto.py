@@ -14,15 +14,18 @@ mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_publish = on_publish
 
 mqttc.user_data_set(to_publish_list)
-mqttc.connect("localhost")
+mqttc.connect("localhost", port=8080)
 mqttc.loop_start()
+
 while True:
+    codigo_dispositivo = "ONEP"
     latitude = randomCoordinates.DDMLatitudeString()
     longitude = randomCoordinates.DDMLongitudeString()
 
-    coordenadas = latitude+longitude
+    payload = f'{{\"codigo_dispositivo\":\"{codigo_dispositivo}\", \"latitude\":\"{latitude}\", \"longitude\":\"{longitude}\"}}'
+    
 
-    msg_info = mqttc.publish(f"coordenadas/{random.randint}", coordenadas, qos=1)
+    msg_info = mqttc.publish("/coordenada", str(payload), qos=1)
     to_publish_list.add(msg_info.mid)
 
     while len(to_publish_list):
