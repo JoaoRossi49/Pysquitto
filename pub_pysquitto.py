@@ -54,11 +54,11 @@ coordenadas_rota66 = [
 ]
 
 for coordenada in coordenadas_rota66:
-    codigo_dispositivo = "ONEP"
+    codigo_dispositivo = "df23c311-6757-4a26-ae23-e6f0acc0cd97"
     coordenadas = coordenada
     latitude, longitude = coordenadas
 
-    payload = f'{{\"codigo_dispositivo\":\"{codigo_dispositivo}\", \"latitude\":\"{latitude}\", \"longitude\":\"{longitude}\", \"data_inclusao\":\"{data_inclusao}\"}}'
+    payload = f'{{\"dispositivo_id\":\"{codigo_dispositivo}\", \"latitude\":\"{latitude}\", \"longitude\":\"{longitude}\", \"data_inclusao\":\"{data_inclusao}\"}}'
     
     print(payload)
 
